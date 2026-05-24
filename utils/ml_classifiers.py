@@ -12,7 +12,8 @@ CLASSIFIERS = {
     # 'dt': DecisionTreeClassifier(),
     'rf': RandomForestClassifier(n_estimators=100),
     'svm': SVC(probability=True, kernel="rbf", gamma="scale"),
-    # 'lr': LogisticRegression(C=1.0, penalty='l2', solver='liblinear', max_iter=1000)
+    'lr': LogisticRegression(C=1.0, penalty='l2', solver='liblinear', max_iter=1000),
+    'nb': GaussianNB(var_smoothing=1e-9)
 }
 
 # create classifiers
@@ -24,12 +25,20 @@ nb_clf = GaussianNB()
 
 
 # ensemble above classifiers for majority voting
-ensemble_clf = VotingClassifier(
-    estimators=[
-        ('mlp', CLASSIFIERS.get('mlp')),
-        ('svm', CLASSIFIERS.get('svm')),
-        ('rf', CLASSIFIERS.get('rf')),
-        ('lr', CLASSIFIERS.get('lr')),
-    ],
+voting_emseble_classifier = VotingClassifier(
+    estimators=[('knn', knn_clf), ('mlp', mlp_clf), ('svm', svm_clf), ('rf', rf_clf), ('nb', nb_clf)],
     voting='soft'
 )
+
+# set a pipeline to handle the prediction process
+ensemble_pipeline = Pipeline([('scaler', StandardScaler()),
+                ('ensemble', voting_emseble_classifier)])
+
+
+'''
+Bank          0.8978
+Census        0.8429
+Credit        0.7833
+Compas        0.8223
+Meps          0.8708
+'''

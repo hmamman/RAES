@@ -1,4 +1,4 @@
-# AES: Redundancy-Aware Evolutionary Search for Individual Fairness Testing
+# RAES: Redundancy-Aware Evolutionary Search for Individual Fairness Testing
 
 **Authors:** Hussaini Mamman, Abdullateef Oluwagbemiga Balogun, Shuib Basri, Muhammad Sabo Yahaya, Shamsuddeen Adamu, Puteri Azzatul Hanan Muzaisham, Muhammad Tella, Luiz Fernando Capretz
 
