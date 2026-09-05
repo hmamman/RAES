@@ -12,22 +12,6 @@
 
 RAES is a search-based approach for individual fairness testing that addresses the **redundancy limitation** of existing methods. Existing search-based Individual Fairness Testing (IFT) methods generate large amounts of redundant test inputs by repeatedly evaluating identical instances, wasting computational resources.
 
-RAES integrates three complementary mechanisms:
-
-- **Unit-Step Mutation**: Applies ±1 perturbations to ensure each mutation produces distinct offspring
-- **Half-Uniform Crossover (HUX)**: Exchanges exactly half of differing genes to maximize recombination diversity
-- **Diversity-Driven Adaptive Mutation**: Dynamically adjusts mutation rates based on population diversity
-
-### Key Results
-
-Evaluation across **5 benchmark datasets** and **3 ML models** shows:
-
-- **55% more unique IDIs** detected on average
-- **1.85× faster** IDI detection speed
-- **17× lower redundancy** compared to state-of-the-art search-based methods
-- **86% success rate** for multi-attribute fairness testing (vs. 42–66% for baselines)
-- **54% reduction** in model discrimination after retraining
-
 ## Repository Structure
 
 ```
@@ -58,14 +42,7 @@ RAES/
 
 ### Setup
 
-1. **Download the repository:**
-
-   ```bash
-   # Download from: https://anonymous.4open.science/r/RAES
-   # Unzip and navigate to the directory
-   cd RAES
-   ```
-2. **Create a virtual environment** (recommended):
+1. **Create a virtual environment** (recommended):
 
    ```bash
    python -m venv venv
@@ -76,7 +53,7 @@ RAES/
    # On Linux/macOS:
    source venv/bin/activate
    ```
-3. **Install dependencies:**
+2. **Install dependencies:**
 
    ```bash
    pip install -r requirements.txt
@@ -209,21 +186,9 @@ Results are saved in the `results/` directory.
 
 ## Requirements
 
-Key dependencies:
-
-- TensorFlow/Keras 3.5.0
-- scikit-learn 1.4.2
-- NumPy 1.26.4
-- Pandas 1.5.3
-- SHAP 0.46.0
-- LIME 0.2.0.1
-
 See `requirements.txt` for the complete list.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
----
-
-*This repository is provided as an anonymous replication package for double-blind peer review.*
